@@ -1,31 +1,58 @@
-function rotateHex($el){
-  var angle = ($el.data('angle') + 60) || 150;
-  $el.css({'transform': 'rotate3d(0, 0, 1, ' + angle + 'deg)'});
-  $el.data('angle', angle);
-}
+$(document).ready(function() {
+  var gridSize = 39;
 
-var $hexGrid = $('<ul>', {
-  id: 'hexGrid'
-})
-.appendTo('main');
-
-var gridSize = 39;
-
-for (var i=0; i<gridSize; i++) {
-  var $li = $('<li>', {
-    class: 'hex'
+  var $hexGrid = $('<ul>', {
+    id: 'hexGrid'
   })
-  .html(
-    `<div class="hexIn">
-       <a class="hexLink" href="#">
-         <img src="images/game1/${i}n.png" alt="" />
-       </a>
-     </div>`
-  )
-  .appendTo($hexGrid)
-}
+  .appendTo('main');
 
-$('.hexLink img').on('click', function(e){
-  e.preventDefault();
-  rotateHex($(this));
-})
+  for (var i=0; i<gridSize; i++) {
+    var $li = $('<li>', {
+      class: 'hex',
+      id: `${i}`
+    })
+    .html(
+      `<div class="hexIn">
+        <a class="hexLink" href="#">
+          <img src="images/game1/${i}n.png" alt="" />
+        </a>
+      </div>`
+    )
+    .appendTo($hexGrid);
+  };
+
+  for (var i=0; i<gridSize; i++) {
+    var random = Math.floor((Math.random() * 6) + 1);
+    var angle = 30 + (60 * random);
+    $(`#${i}`).data('angle', angle);
+    $(`#${i}`).find('img').css({'transform': `rotate3d(0, 0, 1, ${angle}deg)`});
+  };
+
+  var rotateHex = function($el){
+    var angle = $el.closest('li').data('angle') + 60;
+    $el.css({'transform': `rotate3d(0, 0, 1, ${angle}deg)`});
+    $el.closest('li').data('angle', angle);
+  };
+
+  var checkWinner = function() {
+    var won = true;
+    $('#hexGrid').find('li').each(function() {
+      var rotation = $(this).data('angle');
+      console.log($(this).attr('id') + "current rotation: " + rotation % 360)
+      if (($(this).attr('id') == 26) && (rotation % 360 != 90 && rotation % 360 != 270)) {
+        won = false;
+      }
+      else if (($(this).attr('id') != 29) && (rotation % 360 != 90)) {
+        won = false;
+      }
+    })
+    if (won) {console.log("YOU WON!!!!!")};
+  };
+
+  $('.hexLink').on('click', function(e){
+    e.preventDefault();
+    rotateHex($(this).find('img'));
+    checkWinner();
+  });
+
+});
