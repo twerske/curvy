@@ -1,5 +1,5 @@
 function rotateHex($el){
-  var angle = ($el.data('angle') + 60) || 60;
+  var angle = ($el.data('angle') + 60) || 150;
   $el.css({'transform': 'rotate3d(0, 0, 1, ' + angle + 'deg)'});
   $el.data('angle', angle);
 }
@@ -9,7 +9,7 @@ var $hexGrid = $('<ul>', {
 })
 .appendTo('main');
 
-var gridSize = 41;
+var gridSize = 39;
 
 for (var i=0; i<gridSize; i++) {
   var $li = $('<li>', {
@@ -18,7 +18,7 @@ for (var i=0; i<gridSize; i++) {
   .html(
     `<div class="hexIn">
        <a class="hexLink" href="#">
-         <img src="images/game1/${i}.png" alt="" />
+         <img src="images/game1/${i}n.png" alt="" />
        </a>
      </div>`
   )
