@@ -1,3 +1,98 @@
+:root {
+  --lines: pink;
+  --background: lightyellow;
+  --text: orange;
+  --outline: green;
+  --selected: yellow;
+  --selectedFont: red;
+}
+
 body {
-  background: purple;
+  font: 1.5rem Helvetica;
+  background: var(--background);
+}
+
+header {
+  justify-content: center;
+}
+
+#game {
+  min-height: 60%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+#game > main {
+  margin: .5rem;
+  padding: .5rem;
+  border: .02rem solid var(--outline);
+  border-radius: 1rem;
+  background: #dddd88;
+  flex: 3 1 60%;
+  order: 2;
+}
+
+#game > nav {
+  margin: 4px;
+  padding: 5px;
+  border: 1px solid #8888bb;
+  border-radius: 7pt;
+  background: #ccccff;
+  flex: 1 6 20%;
+  order: 1;
+}
+
+#game > aside {
+  margin: 4px;
+  padding: 5px;
+  border: 1px solid #8888bb;
+  border-radius: 7pt;
+  background: #ccccff;
+  flex: 1 6 20%;
+  order: 3;
+}
+
+header, footer {
+  display: block;
+  margin: 4px;
+  padding: 5px;
+  min-height: 100px;
+  border: 1px solid #eebb55;
+  border-radius: 7pt;
+  background: #ffeebb;
+}
+
+/* Too narrow to support three columns */
+@media all and (max-width: 640px) {
+  #game, #page {
+    flex-direction: column;
+  }
+
+  #game > main, #game > nav, #game > aside {
+  /* Return them to document order */
+    order: 0;
+  }
+
+  #game > nav, #game > aside, header, footer {
+    min-height: 50px;
+    max-height: 50px;
+  }
+}
+
+.grid {
+  margin:1em auto;
+  border-collapse:collapse
+}
+
+.grid td {
+  width: 8rem;
+  height: 8rem;
+  /*border: 1px solid var(--outline);*/
+  text-align: center;
+  font-size: 1rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
