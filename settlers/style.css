@@ -1,9 +1,9 @@
 /**** COLOR VARIABLES *********************************************************/
 :root {
-  --main-background: #91C4F2;
+  --main-background: lightblue;
   --text: #FFFFFF;
-  --text-background: #8CA0D7;
-  --game-background: #554971;
+  --text-background: darkgreen;
+  --game-background: black;
 }
 
 /**** GENERAL LAYOUT FORMATTING ***********************************************/
@@ -31,8 +31,7 @@ h1, h2, p, nav, aside, header, footer{
 }
 
 h1 {
-  font-size: 12rem;
-  height: 12.5rem;
+  font-size: 8rem;
   margin: .1rem;
 }
 
@@ -93,7 +92,7 @@ p {
 }
 
 button {
-  font-family: 'Baloo Bhaijaan';
+  font-family: 'Baloo Bhaijaan', cursive;
   font-size: 1.5rem;
   width: 100%;
   height: 4rem;
@@ -111,7 +110,6 @@ button {
   padding-left: 0 auto;
   overflow: hidden;
   list-style-type: none;
-  transform: rotate(-90deg);
 }
 
 .hex{
@@ -160,11 +158,11 @@ button {
 }
 
 .hex {
-  width: 16.66666%; /* = 100 / 6 */
+  width: 20%; /* = 100 / 5 */
 }
 
-.hex:nth-child(11n+7){ /* first hexagon of even rows */
-  margin-left:8.33333%;  /* = width of .hex / 2  to indent even rows */
+.hex:nth-child(9n+6){ /* first hexagon of even rows */
+  margin-left:10%;  /* = width of .hex / 2  to indent even rows */
 }
 
 /*** HEX IMAGES ***************************************************************/
