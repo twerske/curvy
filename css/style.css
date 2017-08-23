@@ -21,7 +21,6 @@ header, footer {
   display: block;
   margin: .5rem;
   padding: .5rem;
-  min-height: 8rem;
   border-radius: 7pt;
   background: var(--text-background);
 }
@@ -64,8 +63,8 @@ p {
   order: 2;
 }
 
-#game > nav > div:nth-child(2) {
-  margin-top: 50px;
+#game > nav > div:nth-child(2), #game > aside > div:nth-child(2) {
+  margin-top: 2rem;
 }
 
 #game > nav {
@@ -84,6 +83,16 @@ p {
   background: var(--text-background);
   flex: 1 6 20%;
   order: 3;
+}
+
+button {
+  font-family: 'Baloo Bhaijaan';
+  font-size: 1.5rem;
+  width: 100%;
+  height: 4rem;
+  background: var(--text);
+  color: var(--game-background);
+  border-radius: 1rem;
 }
 
 /*** HEX GRID *****************************************************************/
@@ -157,12 +166,15 @@ p {
     order: 0;
   }
 
-  #game > nav, #game > aside, header, footer {
-    min-height: 50px;
-    max-height: 50px;
+  #game > nav, #game > aside, header {
+    min-height: 1rem;
+    max-height: 10rem;
+  }
+
+  footer {
+    height: 1rem;
   }
 }
-
 /****HEXAGON SIZING AND EVEN ROW INDENTATION **********************************/
 @media (min-width:1201px) { /* <- 6  hexagons per row */
   #hexGrid{

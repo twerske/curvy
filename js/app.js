@@ -39,8 +39,10 @@ $(document).ready(function() {
     };
   }
 
-  // Shuffle the initial grid
-  shuffleGrid();
+  // Shuffle the grid when start is pressed
+  $('#start').on('click', function(){
+    shuffleGrid();
+  })
 
   /**
   Rotate individual tile and update angle data.
