@@ -34,6 +34,10 @@ $(document).ready(function() {
     $el.closest('li').data('angle', angle);
   };
 
+  var alertWinner = function() {
+    alert(`Congratulations! You completed this curvy puzzle with a time of 0:00`)
+  }
+
   var checkWinner = function() {
     var won = true;
     $('#hexGrid').find('li').each(function() {
@@ -46,7 +50,7 @@ $(document).ready(function() {
         won = false;
       }
     })
-    if (won) {console.log("YOU WON!!!!!")};
+    if (won) {alertWinner()};
   };
 
   $('.hexLink').on('click', function(e){

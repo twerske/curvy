@@ -1,12 +1,9 @@
 /**** COLOR VARIABLES *********************************************************/
 :root {
-  --main-background: pink;
-  --outlines: blue;
-  --text: white;
-  --text-background: black;
-  --game-background: grey;
-  --selected: yellow;
-  --selectedFont: red;
+  --main-background: #91C4F2;
+  --text: #FFFFFF;
+  --text-background: #8CA0D7;
+  --game-background: #554971;
 }
 
 /**** GENERAL LAYOUT FORMATTING ***********************************************/
@@ -25,20 +22,28 @@ header, footer {
   margin: .5rem;
   padding: .5rem;
   min-height: 8rem;
-  border: .05rem solid var(--outlines);
   border-radius: 7pt;
   background: var(--text-background);
 }
 
 /**** TEXT FORMATTING *********************************************************/
-h1, h2, p, nav, aside{
+h1, h2, p, nav, aside, header, footer{
   color: var(--text);
 }
 
 h1 {
   font-size: 12rem;
   height: 12.5rem;
-  margin: .3rem;
+  margin: .1rem;
+}
+
+h2 {
+  margin-top: .5rem;
+  margin-bottom: 0;
+}
+
+p {
+  margin: 0;
 }
 
 /**** GAME BOARD AND INFORMATION FORMATTING ***********************************/
@@ -53,19 +58,21 @@ h1 {
 #game > main {
   margin: .5rem;
   padding: .5rem;
-  border: .02rem solid var(--outline);
   border-radius: 1rem;
-  background: black;
+  background: var(--game-background);
   flex: 3 1 60%;
   order: 2;
+}
+
+#game > nav > div:nth-child(2) {
+  margin-top: 50px;
 }
 
 #game > nav {
   margin: .5rem;
   padding: .5rem;
-  border: .02rem solid var(--outline);
   border-radius: 1rem;
-  background: black;
+  background: var(--text-background);
   flex: 1 6 20%;
   order: 1;
 }
@@ -73,9 +80,8 @@ h1 {
 #game > aside {
   margin: .5rem;
   padding: .5rem;
-  border: .02rem solid var(--outline);
   border-radius: 1rem;
-  background: black;
+  background: var(--text-background);
   flex: 1 6 20%;
   order: 3;
 }
