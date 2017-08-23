@@ -61,6 +61,9 @@ p {
   background: var(--game-background);
   flex: 3 1 60%;
   order: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #game > nav > div:nth-child(2), #game > aside > div:nth-child(2) {
@@ -112,11 +115,13 @@ button {
   visibility: hidden;
   outline: 1px solid transparent;
 }
+
 .hex::after{
   content:'';
   display:block;
   padding-bottom: 86.602%;  /* =  100 / tan(60) * 1.5 */
 }
+
 .hexIn{
   position: absolute;
   width: 96%;
@@ -129,11 +134,13 @@ button {
       -ms-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
           transform: rotate3d(0,0,1,-60deg) skewY(30deg);
 }
+
 .hexIn * {
   position: absolute;
   visibility: visible;
   outline: 1px solid transparent;
 }
+
 .hexLink {
     display: block;
     width: 100%;
@@ -142,6 +149,18 @@ button {
     -webkit-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
         -ms-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
             transform: skewY(-30deg) rotate3d(0,0,1,60deg);
+}
+
+#hexGrid{
+  padding-bottom: 4.4%
+}
+
+.hex {
+  width: 16.66666%; /* = 100 / 6 */
+}
+
+.hex:nth-child(11n+7){ /* first hexagon of even rows */
+  margin-left:8.33333%;  /* = width of .hex / 2  to indent even rows */
 }
 
 /*** HEX IMAGES ***************************************************************/
@@ -177,19 +196,17 @@ button {
 }
 /****HEXAGON SIZING AND EVEN ROW INDENTATION **********************************/
 @media (min-width:1201px) { /* <- 6  hexagons per row */
-  #hexGrid{
-    padding-bottom: 4.4%
-  }
-  .hex {
-    width: 16.66666%; /* = 100 / 6 */
-  }
-  .hex:nth-child(11n+7){ /* first hexagon of even rows */
-    margin-left:8.33333%;  /* = width of .hex / 2  to indent even rows */
-  }
+
 }
 
 @media (max-width: 1200px) { /* <- 4-3  hexagons per row */
-  #hexGrid{
-    display: none;
+  h1 {
+    font-size: 8rem;
+    height: 8.5rem;
+    margin: .05rem;
+  }
+
+  h2 {
+    margin-top: .5rem;
   }
 }

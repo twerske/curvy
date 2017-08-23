@@ -61,9 +61,13 @@ $(document).ready(function() {
   Output: user notified
   **/
   var alertWinner = function() {
-    console.log("WINNNER!!!!");
-    alert(`Congratulations! You completed this curvy puzzle with a time of 0:00`);
-  }
+    $('html, body').animate({scrollTop: 0}, 'fast');
+    $('h1').html("You won!");
+    setTimeout(function(){
+      $('h1').html("Curvy");
+      shuffleGrid();
+    }, 5000);
+  };
 
   /**
   Check if a user has won.
@@ -74,6 +78,7 @@ $(document).ready(function() {
     var won = true;
     $('#hexGrid').find('li').each(function() {
       var rotation = $(this).data('angle');
+      console.log(`${$(this).attr('id')}: ${rotation % 360}`);
       if (($(this).attr('id') == 26) && (rotation % 360 != 90 && rotation % 360 != 270)) {
         won = false;
       }
