@@ -1,11 +1,15 @@
+// When document is ready, begin to create *curvy*
 $(document).ready(function() {
+  // Set size of hex grid (in this case, 6 x 5)
   var gridSize = 39;
 
+  // Create hex grid unordered list to hold the hexagons in
   var $hexGrid = $('<ul>', {
     id: 'hexGrid'
   })
   .appendTo('main');
 
+  // Create each list item of a hexagonal grid tile and add to the grid
   for (var i=0; i<gridSize; i++) {
     var $li = $('<li>', {
       class: 'hex',
@@ -21,28 +25,53 @@ $(document).ready(function() {
     .appendTo($hexGrid);
   };
 
-  for (var i=0; i<gridSize; i++) {
-    var random = Math.floor((Math.random() * 6) + 1);
-    var angle = 30 + (60 * random);
-    $(`#${i}`).data('angle', angle);
-    $(`#${i}`).find('img').css({'transform': `rotate3d(0, 0, 1, ${angle}deg)`});
-  };
+  /**
+  Shuffle each tile on the grid individually and assign this angle of rotation to data angle.
+  Input: none
+  Output: no returns, shuffled tiles on the grid
+  **/
+  var shuffleGrid = function () {
+    for (var i=0; i<gridSize; i++) {
+      var random = Math.floor((Math.random() * 6) + 1);
+      var angle = 30 + (60 * random);
+      $(`#${i}`).data('angle', angle);
+      $(`#${i}`).find('img').css({'transform': `rotate3d(0, 0, 1, ${angle}deg)`});
+    };
+  }
 
+  // Shuffle the initial grid
+  shuffleGrid();
+
+  /**
+  Rotate individual tile and update angle data.
+  Input: jquery element of a li hexagon tile to rotate
+  Output: no returns, tile is rotated and updated
+  **/
   var rotateHex = function($el){
     var angle = $el.closest('li').data('angle') + 60;
     $el.css({'transform': `rotate3d(0, 0, 1, ${angle}deg)`});
     $el.closest('li').data('angle', angle);
   };
 
+  /**
+  Alerts the user that they have won!
+  Input: none
+  Output: user notified
+  **/
   var alertWinner = function() {
-    alert(`Congratulations! You completed this curvy puzzle with a time of 0:00`)
+    console.log("WINNNER!!!!");
+    alert(`Congratulations! You completed this curvy puzzle with a time of 0:00`);
   }
 
+  /**
+  Check if a user has won.
+  Input: none
+  Output: no returns, if user won, alertWinner is called
+  **/
   var checkWinner = function() {
     var won = true;
     $('#hexGrid').find('li').each(function() {
       var rotation = $(this).data('angle');
-      console.log($(this).attr('id') + "current rotation: " + rotation % 360)
       if (($(this).attr('id') == 26) && (rotation % 360 != 90 && rotation % 360 != 270)) {
         won = false;
       }
@@ -53,10 +82,10 @@ $(document).ready(function() {
     if (won) {alertWinner()};
   };
 
+  // Assign click event to each tile to rotate the tile and check for solution
   $('.hexLink').on('click', function(e){
     e.preventDefault();
     rotateHex($(this).find('img'));
     checkWinner();
   });
-
 });

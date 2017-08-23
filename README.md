@@ -3,10 +3,10 @@ Curvy
 A rendition of the game 'Curvy' to fulfill our CODA Unit 1 game assignment
 ---------------------
 ### Technologies used.
-To complete this project, I used Github, Atom, Javascript, CSS and HTML. I also used ...
+To complete this project, I used Github, Atom, Javascript, CSS and HTML.
 
 ### Your process/approach.
-My process was to initially wireframe and create user stories, as well as look at the compenents this game would need. I then created psuedocode outlining each technology and how it would be used. Next, I ...
+My process was to initially wireframe and create user stories, as well as look at the components this game would need. I then created psuedo-code outlining each technology and how it would be used. Next, I began by figuring out creating the game board. This hexagonal design..
 
 ### Future features
 In the future, this game will include levels of difficulty and customization, as well as a potential version to play against a competer and keep score as the number of edges successfully matched up in each round or turn.
