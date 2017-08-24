@@ -123,24 +123,57 @@ $(document).ready(function() {
         $li.addClass('vertex');
         $li.find('p').html('&#9830;');
         vertexIndexes[i].adjacentRoads.forEach(function(road) {
-          console.log(`${road} is a road`)
           $(`#space${road}`).addClass('road');
         });
       };
     };
   }
 
+  var select = function($el) {
+    $el.find('p').attr('id', currentPlayer);
+    $el.addClass(currentGamePiece)
+  }
+
+  var initializeGamePieces = function() {
+    $('.vertex').on('click', function(){
+      select($(this));
+      // $(this).attr('disabled', true);
+    });
+
+    $('.road').on('click', function(){
+      select($(this));
+      // $(this).attr('disabled', true);
+    });
+  }
+
   initializeHexGrid();
   initializeGameGrid();
+  initializeGamePieces();
 
   // Re-initialize game when new game is pressed
-  $('#start').on('click', function(){
+  $('#start').on('click', function() {
     initializeHexGrid();
     initializeGameGrid();
+    initializeGamePieces();
   });
 
+  var currentPlayer, currentGamePiece;
+  currentPlayer = 'red';
+  currentGamePiece = 'settlement';
+
   // First round
-  // here
+  // var finished = false;
+  // while (!finished) {
+  //   for (p in players) {
+  //     var turnOver = false;
+  //     while (!turnOver) {
+  //
+  //     }
+  //   }
+  //     currentPlayer = p;
+  //     currentGamePiece = 'settlement'
+  //
+  // }
 
   var turnRoll = 0;
   // Roll dice when roll is pressed
@@ -149,13 +182,6 @@ $(document).ready(function() {
     $('#roll').on('click', function(){turnRoll = rollDice();});
   };
   enableDice();
-
-  // var turnPlay = function() {
-  //   console.log("Please roll the dice:");
-  //   $('#roll').on('click', function(){$(this).attr('disabled', true); console.log(turnRoll);});
-  //   setTimeout(function(){enableDice()}, 3000);
-  // };
-  // turnPlay();
 });
 
 /*******************************************************************************

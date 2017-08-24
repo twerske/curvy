@@ -336,6 +336,18 @@ li.hex p{
   width: 75%
 }
 
+.city p {
+  border: .25rem solid var(--text);
+  border-radius: 20%;
+  width: 75%
+}
+
+.settlement p {
+  border: .05rem solid var(--text);
+  border-radius: 20%;
+  width: 75%
+}
+
 .road p {
   border: .05rem solid var(--text);
   border-radius: 20%;
