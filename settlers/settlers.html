@@ -29,20 +29,7 @@
           <button type='button' id='start'>New Game</button>
         </div>
         <div>
-          <h2>How to Play:</h2>
-          <p>Start by clicking 'New Game'</p>
-          <p>For now, you are playing for all four characters.</p>
-          <p>You begin with 2 settlements and 2 roads to place, we will each place one road and one settlement per turn, rotating clockwise around the group of players.</p>
-
-          <h2>Winning:</h2>
-          <p>
-            ...
-          </p>
-        </div>
-        <div>
-          <h2>About:</h2>
-          <p>
-            ...
+          <button type='button'><a id='instructions' href='#instructions'>Instructions</a></button>
         </div>
       </nav>
       <aside>
@@ -128,6 +115,60 @@
     <footer>
       &copy; Emma Twersky, CODA 2017
       <button type='button' id='swerve' onclick="window.location.href='../index.html'">Back to Curvy</button>
+      <div>
+        <h2><a NAME='instructions'>How to Play:</h2>
+        <ul>
+          <h3>Beginning the Game</h3>
+          <ul>
+            <li>Start by clicking 'New Game'</li>
+            <li>All four players must be manually controlled.</li>
+            <li>Each player begins with 2 settlements and 2 roads to place, each player will each place one road and one settlement per turn, rotating clockwise around the group of players twice.</li>
+            <li>On each turn, please select 'Purchase _' of the item you want to place, followed by the square it will be placed on.</li>
+            <li>The player will receive one resource from each of the adjacent terrains to the two settlements they place.</li>
+            <li>Once the first round is over, we continue to game play.</li>
+          </ul>
+          <hr>
+          <h3>Gameplay</h3>
+          <ul>
+            <li>Each turn consists of three stages:</li>
+            <li>First we roll the dice.</li>
+            <ul>
+              <li>Each settlement and city adjacent to tiles with the total value rolled will receive resources, one per settlement and two per city.</li>
+              <li>If a 7 is rolled, the player may move the Robber to a new tile.</li>
+              <ul>
+                <li>This new tile no longer produces resources.</li>
+                <li>In addition, the player moving the robber may steal once resource from any player with a settlement or city adjacent to this new tile.</li>
+              </ul>
+            </ul>
+            <li>Next, resources can be traded and bartered.</li>
+            <ul>
+              <li>This feature is currently not possible in this version.</li>
+              <!-- <li>A player is allowed to trade resources with any other player, so long as both parties agree. This can be done in the trade box on the left.</li> -->
+              <!-- <li>Resources can be traded with the bank, exchanging 4 of any one resource for one of whatever type is preffered.</li> -->
+            </ul>
+            <li>Finally, settlements may be purchased and placed on the map, upgraded, and additional developement cards may be purchased.</li>
+            <ul>
+              <li>All settlements must be built at vertices and connected by roads.</li>
+              <li>All settlements must be two roads away from the nearest other settlement.</li>
+              <li>Settlements must exist to be upgraded to cities.</li>
+              <li>Development cards, not currently available, have various details and instructions on their card.</li>
+            </ul>
+          </ul>
+          <hr>
+          <h3>Winning</h3>
+          <ul>
+            <li>The first player with 10 victory points wins.</li>
+            <ul>
+              <li>Each settlement is worth 1 point, each city is worth 2 points.</li>
+              <li>The longest road and the largest rmy are wach worth 1 point. Development cards also have various point values.</li>
+            </ul>
+          </ul>
+      </div>
+      <div>
+        <h2>About:</h2>
+        <p>
+          ...
+      </div>
     </footer>
     <script src='https://code.jquery.com/jquery-3.1.1.min.js' integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=' crossorigin='anonymous'></script>
     <script src='./variables.js'></script>

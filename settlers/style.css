@@ -124,6 +124,12 @@ nav div#gameOptions {
   font-size: 1rem;
 }
 
+a#instructions {
+  text-decoration: none;
+  color: var(--game-background);
+}
+
+
 #game > aside {
   margin: .5rem;
   padding: .5rem;
