@@ -105,12 +105,23 @@ p {
   flex-direction: column;
 }
 
+nav div#gameOptions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 #dice {
   font-family: fantasy;
   font-size: 10rem;
   text-align: center;
   align-self: baseline;
   line-height: 100%;
+}
+
+#gameOptions button {
+  width: 33%;
+  font-size: 1rem;
 }
 
 #game > aside {
@@ -125,14 +136,14 @@ p {
   position: relative;
 }
 
-aside div {
+nav div:nth-child(2), aside div, nav #start {
   background: var(--text);
   border-radius: 1rem;
   padding: .25rem;
   border: 3px solid var(--token-text);
 }
 
-aside h2, aside p {
+#gameOptions h2, aside h2, aside p {
   color: var(--token-text);
 }
 
@@ -141,7 +152,7 @@ aside a {
   font-weight: 900;
 }
 
-aside hr {
+hr {
   width: 98%;
   border-top: 3px double var(--token-text);
 }
@@ -151,7 +162,7 @@ aside img {
   margin-right: -.75rem;
 }
 
-button {
+#gameOptions #roll, #gameOptions #turnOver, button {
   font-family: 'Baloo Bhaijaan', cursive;
   font-size: 1.5rem;
   width: 100%;

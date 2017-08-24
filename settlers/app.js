@@ -170,29 +170,25 @@ $(document).ready(function() {
     initializeGamePieces();
   });
 
+  var currentPlayerIndex = 0,
+      currentGamePiece= 'settlement',
+      currentPlayer = players[currentPlayerIndex];
+  $('#currentPlayer').html(currentPlayer);
+  $('#currentPlayer').closest('h2').attr('id', currentPlayer);
+
   $('#turnOver').on('click', function() {
-    currentPlayer = player[currentPlayerIndex]
+    currentPlayer = players[++currentPlayerIndex % 4];
+    $('#currentPlayer').html(currentPlayer);
+    $('#currentPlayer').closest('h2').attr('id', currentPlayer);
   });
-
-  var currentPlayerIndex = 0, currentGamePiece;
-  // currentGamePiece = 'settlement';
-
-  // First round
-  // var finished = false;
-  // while (!finished) {
-  //     var turnOver = false;
-  //     while (!turnOver) {
-  //
-  //     }
-  //   }
-  currentPlayer = 'red';
-  currentGamePiece = 'settlement'
 
   var turnRoll = 0;
   // Roll dice when roll is pressed
   var enableDice = function() {
-    $('#roll').attr('disabled', false)
-    $('#roll').on('click', function(){turnRoll = rollDice();});
+    // $('#roll').attr('disabled', false)
+    $('#roll').on('click', function(){
+      turnRoll = rollDice();
+    });
   };
   enableDice();
 });
@@ -456,32 +452,60 @@ var developmentCards = {
     palace: 1,
     university: 1
   }
-}
+};
 
 var specialCards = {
   longestRoad: 1,
   largestArmy: 1
-}
+};
 
-var players = {
+var players = ['orange', 'blue', 'white', 'red'];
+
+var playerPieceStatus = {
   orange: {
-    cities: 4,
-    settlements: 5,
-    roads: 15
+    cities: 0,
+    settlements: 0,
+    roads: 0,
+    brick: 0,
+    ore: 0,
+    wool: 0,
+    grain: 0,
+    lumber: 0
   },
   blue: {
-    cities: 4,
-    settlements: 5,
-    roads: 15
+    cities: 0,
+    settlements: 0,
+    roads: 0,
+    brick: 0,
+    ore: 0,
+    wool: 0,
+    grain: 0,
+    lumber: 0
   },
   white: {
-    cities: 4,
-    settlements: 5,
-    roads: 15
+    cities: 0,
+    settlements: 0,
+    roads: 0,
+    brick: 0,
+    ore: 0,
+    wool: 0,
+    grain: 0,
+    lumber: 0
   },
   red: {
-    cities: 4,
-    settlements: 5,
-    roads: 15
+    cities: 0,
+    settlements: 0,
+    roads: 0,
+    brick: 0,
+    ore: 0,
+    wool: 0,
+    grain: 0,
+    lumber: 0
   }
+}
+
+var pieceMax = {
+  cities: 4,
+  settlements: 5,
+  roads: 15
 }
