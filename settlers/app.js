@@ -3,7 +3,8 @@ VARIABLES
 *******************************************************************************/
 
 // Set size of hex grid (in this case, 5 x 5)
-var gridSize = 23;
+var hexGridSize = 23;
+var gamehexGridSize = 160;
 
 // Array of terrain tiles
 var pieces = ['desert', 'field', 'field', 'field', 'field', 'hill', 'hill',
@@ -89,9 +90,32 @@ function shuffle(array) {
   return array;
 }
 
+var rollDice = function() {
+    var i,
+        faceValue,
+        total = 0,
+        output = '';
+    for (i = 0; i < 2; i++) {
+        faceValue = Math.floor(Math.random() * 6);
+        output += `&#x268${faceValue}; `;
+        total += faceValue;
+    }
+    $('#dice').html(output);
+
+    return total
+}
+
 /*******************************************************************************
                             WHEN LOADED & LOGIC
 *******************************************************************************/
+// Fit game board responsively on the game tile background
+$(window).resize(function() {
+  var h = parseFloat($('#hexGrid').css('padding-bottom')) + $('#hexGrid').height()
+
+  $('#gameGrid').height(h);
+  $('#gameGrid').width($('#hexGrid').width());
+});
+
 $(document).ready(function() {
   // Create hex grid unordered list to hold the hexagons in
   var $hexGrid = $('<ul>', {
@@ -105,18 +129,18 @@ $(document).ready(function() {
   .appendTo('main');
 
   // Set up game board to play
-  var initializeGameBoard = function() {
+  var initializeHexGrid = function() {
     $('#hexGrid li').remove();
 
     // Create each list item of a hexagonal grid tile and add to the grid
     var gamePieces = shuffle(pieces.slice(0));
     var gameTokens = shuffle(tokens.slice(0));
     var src, alt, token;
-    for (var i=0; i<gridSize; i++) {
+    for (var i=0; i<hexGridSize; i++) {
       if (i == 0 || i == 4 || i == 22 || i == 18) {
         alt = 'blank';
         src = `images/terrain/frog.png`;
-        token = [0, ""];
+        token = [0, ''];
       }
       else {
         alt = gamePieces.pop();
@@ -144,11 +168,70 @@ $(document).ready(function() {
       )
       .appendTo($hexGrid);
     };
+
+    rollDice();
+
+    $(window).trigger('resize');
   };
-  initializeGameBoard();
+
+  var initializeGameGrid = function() {
+    $('#gameGrid li').remove();
+
+    for (var i=0; i<gamehexGridSize; i++) {
+      if (i == 0 || i == 4 || i == 22 || i == 18) {
+        alt = 'blank';
+        src = `images/terrain/frog.png`;
+        token = [0, ''];
+      }
+      else {
+        alt = gamePieces.pop();
+        src = `images/terrain/${alt}.png`;
+        if (alt == 'desert') {
+          token = ['R', ''];
+        }
+        else {
+          token = gameTokens.pop();
+        };
+      };
+
+      var $li = $('<li>', {
+        class: `hex ${alt}`,
+        id: `token${token[0]}`
+      })
+      .html(
+        `<div class='hexIn ${alt}' >
+          <a class='hexLink' href='#'>
+            <img src=${src} alt=${alt}/>
+            <h1>${token[0]}</h1>
+            <p>${token[1]}</p>
+          </a>
+        </div>`
+      )
+      .appendTo($hexGrid);
+    };
+  }
+
+  initializeHexGrid();
 
   // Re-initialize game when new game is pressed
-  $('#start').on('click', function(){
-    initializeGameBoard();
-  })
+  $('#start').on('click', function(){initializeGameBoard();});
+
+  // First round
+
+
+
+  var turnRoll = 0;
+  // Roll dice when roll is pressed
+  var enableDice = function() {
+    $('#roll').attr('disabled', false)
+    $('#roll').on('click', function(){turnRoll = rollDice();});
+  };
+  enableDice();
+
+  // var turnPlay = function() {
+  //   console.log("Please roll the dice:");
+  //   $('#roll').on('click', function(){$(this).attr('disabled', true); console.log(turnRoll);});
+  //   setTimeout(function(){enableDice()}, 3000);
+  // };
+  // turnPlay();
 });

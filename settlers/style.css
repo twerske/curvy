@@ -8,6 +8,10 @@
   --token-background: #E5D7BC;
   --red-token: #DE4557;
   --robber: #414241;
+  --white-player: #FCFCFC;
+  --orange-player: #FF9F1C;
+  --blue-player: #3D6DFF;
+  --red-player: #F03A47;
 }
 
 /**** GENERAL LAYOUT FORMATTING ***********************************************/
@@ -48,6 +52,22 @@ p {
   margin: 0;
 }
 
+#white {
+  text-shadow: 0 0 7px var(--white-player);
+}
+
+#orange {
+  text-shadow: 0 0 3px var(--orange-player);
+}
+
+#blue {
+  text-shadow: 0 0 1px var(--blue-player);
+}
+
+#red {
+  text-shadow: 0 0 1px var(--red-player);
+}
+
 /**** GAME BOARD AND INFORMATION FORMATTING ***********************************/
 #game {
   min-height: 60%;
@@ -69,8 +89,9 @@ p {
   justify-content: center;
 }
 
+/**** GAME INSTRUCTIONS AND SCORING FORMATTING ********************************/
 #game > nav > div:nth-child(2), #game > nav > div:nth-child(3), #game > aside > div:nth-child(2) {
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 #game > nav {
@@ -82,6 +103,14 @@ p {
   order: 1;
   display: flex;
   flex-direction: column;
+}
+
+#dice {
+  font-family: fantasy;
+  font-size: 10rem;
+  text-align: center;
+  align-self: baseline;
+  line-height: 100%;
 }
 
 #game > aside {
@@ -105,6 +134,11 @@ aside div {
 
 aside h2, aside p {
   color: var(--token-text);
+}
+
+aside a {
+  color: var(--text-background);
+  font-weight: 900;
 }
 
 aside hr {
@@ -137,7 +171,6 @@ button {
   padding-left: 0;
   overflow: hidden;
   list-style-type: none;
-  position: relative;
   align-self: center;
 }
 
@@ -238,19 +271,20 @@ li p{
 
 /*** GAME GRID ****************************************************************/
 #gameGrid {
-  /*background: rgba(100,0,0,.5);*/
-  z-index: 100;
+  background: rgba(100,0,0,.5);
 
   position: absolute;
-  width: 50%;
-	height: 90%;
+  width: 674.891px;
+  height: 617.359px;
+  align-self: center;
+  margin: 0;
+  padding: 0;
 
 	display: flex;
   flex-wrap: wrap;
-  margin: 0 auto;
-  padding-bottom: 4.4%;
-  overflow: hidden;
-  list-style-type: none;
+
+  /*overflow: hidden;*/
+  /*list-style-type: none;*/
 }
 
 /*** MEDIA QUERIES*************************************************************/

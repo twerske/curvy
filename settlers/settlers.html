@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <title>Settlers</title>
-    <!-- <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan" rel="stylesheet"> -->
-    <link rel="stylesheet" href="./style.css">
+    <!-- <link href='https://fonts.googleapis.com/css?family=Baloo+Bhaijaan' rel='stylesheet'> -->
+    <link rel='stylesheet' href='./style.css'>
   </head>
   <body>
     <header>
@@ -14,11 +14,15 @@
       <main></main>
       <nav>
         <div>
-          <button type="button" id="start">New Game</button>
+          <div id='dice'></div>
+          <button type='button' id='roll'>Roll Dice</button>
+        </div>
+        <div>
+          <button type='button' id='start'>New Game</button>
         </div>
         <div>
           <h2>How to Play:</h2>
-          <p>Start by clicking "New Game"</p>
+          <p>Start by clicking 'New Game'</p>
           <p>You are Orange. Begin by placing your starting settlements and roads.</p>
 
           <h2>Winning:</h2>
@@ -36,7 +40,7 @@
         <div>
           <h2>Players</h2>
           <hr>
-          <p id='orange'> <b>Orange (you):</b> <a class='vp'>0</a> points <br>
+          <p id='orange'> <b>Orange (you):</b> <a class='vp'>0</a> victory points <br>
             Cities: <a class='cities'>0</a>,
             Settlements: <a class='settlement'>2</a>,
             Roads: <a class='roads'>2</a> <br>
@@ -47,7 +51,7 @@
             Lumber: <a class='lumber'>0</a>
           </p>
           <hr>
-          <p id='blue'> <b>Blue:</b> <a class='vp'>0</a> points <br>
+          <p id='blue'> <b>Blue:</b> <a class='vp'>0</a> victory points <br>
             Cities: <a class='cities'>0</a>,
             Settlements: <a class='settlement'>2</a>,
             Roads: <a class='roads'>2</a> <br>
@@ -58,7 +62,7 @@
             Lumber: <a class='lumber'>0</a>
           </p>
           <hr>
-          <p id='white'> <b>White:</b> <a class='vp'>0</a> points <br>
+          <p id='white'> <b>White:</b> <a class='vp'>0</a> victory points <br>
             Cities: <a class='cities'>0</a>,
             Settlements: <a class='settlement'>2</a>,
             Roads: <a class='roads'>2</a> <br>
@@ -69,7 +73,7 @@
             Lumber: <a class='lumber'>0</a>
           </p>
           <hr>
-          <p id='red'> <b>Red:</b> <a class='vp'>0</a> points <br>
+          <p id='red'> <b>Red:</b> <a class='vp'>0</a> victory points <br>
             Cities: <a class='cities'>0</a>,
             Settlements: <a class='settlement'>2</a>,
             Roads: <a class='roads'>2</a> <br>
@@ -114,9 +118,9 @@
     </div>
     <footer>
       &copy; Emma Twersky, CODA 2017
-      <button type="button" id="swerve" onclick="window.location.href='../index.html'">Back to Curvy</button>
+      <button type='button' id='swerve' onclick="window.location.href='../index.html'">Back to Curvy</button>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="./app.js"></script>
+    <script src='https://code.jquery.com/jquery-3.1.1.min.js' integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=' crossorigin='anonymous'></script>
+    <script src='./app.js'></script>
   </body>
 </html>
