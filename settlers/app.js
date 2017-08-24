@@ -4,7 +4,7 @@ VARIABLES
 
 // Set size of hex grid (in this case, 5 x 5)
 var hexGridSize = 23;
-var gamehexGridSize = 160;
+var gameGridSize = 420;
 
 // Array of terrain tiles
 var pieces = ['desert', 'field', 'field', 'field', 'field', 'hill', 'hill',
@@ -15,6 +15,8 @@ var tokens = [[2, '*'], [3, '**'], [3, '**'], [4, '***'], [4, '***'],
 [5, '****'], [5, '****'], [6, '*****'], [6, '*****'], [8, '*****'],
 [8, '*****'], [9, '****'], [9, '****'], [10, '***'], [10, '***'],
 [11, '**'], [11, '**'], [12, '**']];
+
+var vertexIndexes = []
 
 var resourceCards = {
   brick: 19,
@@ -110,7 +112,7 @@ var rollDice = function() {
 *******************************************************************************/
 // Fit game board responsively on the game tile background
 $(window).resize(function() {
-  var h = parseFloat($('#hexGrid').css('padding-bottom')) + $('#hexGrid').height()
+  var h = 4 * parseFloat($('#hexGrid').css('padding-bottom')) + $('#hexGrid').height()
 
   $('#gameGrid').height(h);
   $('#gameGrid').width($('#hexGrid').width());
@@ -123,8 +125,8 @@ $(document).ready(function() {
   })
   .appendTo('main');
 
-  var $gamePieceGrid = $('<ul>', {
-    id: 'gameGrid'
+  var $gameGrid = $('<ul>', {
+    id: 'gameGrid',
   })
   .appendTo('main');
 
@@ -177,48 +179,29 @@ $(document).ready(function() {
   var initializeGameGrid = function() {
     $('#gameGrid li').remove();
 
-    for (var i=0; i<gamehexGridSize; i++) {
-      if (i == 0 || i == 4 || i == 22 || i == 18) {
-        alt = 'blank';
-        src = `images/terrain/frog.png`;
-        token = [0, ''];
-      }
-      else {
-        alt = gamePieces.pop();
-        src = `images/terrain/${alt}.png`;
-        if (alt == 'desert') {
-          token = ['R', ''];
-        }
-        else {
-          token = gameTokens.pop();
-        };
-      };
-
+    for (var i=0; i<gameGridSize; i++) {
+      console.log("here")
       var $li = $('<li>', {
-        class: `hex ${alt}`,
-        id: `token${token[0]}`
+        class: `gameSpace`,
+        id: `space${i}`
       })
       .html(
-        `<div class='hexIn ${alt}' >
-          <a class='hexLink' href='#'>
-            <img src=${src} alt=${alt}/>
-            <h1>${token[0]}</h1>
-            <p>${token[1]}</p>
-          </a>
+        `<div class='square' >
+          <p>${i}</p>
         </div>`
       )
-      .appendTo($hexGrid);
+      .appendTo($gameGrid);
     };
   }
 
   initializeHexGrid();
+  initializeGameGrid();
 
   // Re-initialize game when new game is pressed
   $('#start').on('click', function(){initializeGameBoard();});
 
   // First round
-
-
+  // here
 
   var turnRoll = 0;
   // Roll dice when roll is pressed
