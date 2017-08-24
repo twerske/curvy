@@ -4,8 +4,8 @@
   --text: #EFE9E1;
   --text-background: #065143;
   --game-background: #129490;
-  --tile-text: #7D4E57;
-  --tile-number-background: #E5D7BC;
+  --token-text: #7D4E57;
+  --token-background: #E5D7BC;
   --red-token: #DE4557;
 }
 
@@ -94,6 +94,27 @@ p {
   position: relative;
 }
 
+aside div {
+  background: var(--text);
+  border-radius: 1rem;
+  padding: .25rem;
+  border: 3px solid var(--token-text);
+}
+
+aside h2, aside p {
+  color: var(--token-text);
+}
+
+aside hr {
+  width: 98%;
+  border-top: 3px double var(--token-text);
+}
+
+aside img {
+  height: 2.5rem;
+  margin-right: -.75rem;
+}
+
 button {
   font-family: 'Baloo Bhaijaan', cursive;
   font-size: 1.5rem;
@@ -179,12 +200,12 @@ button {
 }
 
 li h1 {
-  color: var(--tile-text);
+  color: var(--token-text);
   font-size: 2.3rem;
   width: 40%;
   height: 35%;
   border-radius: 200%;
-  background: var(--tile-number-background);
+  background: var(--token-background);
   text-align: center;
   justify-content: center;
   line-height: 2.2rem;
@@ -194,7 +215,7 @@ li p{
   text-align: center;
   justify-content: center;
   line-height: 5.5rem;
-  color: var(--tile-text);
+  color: var(--token-text);
   font-size: 1rem;
   width: 40%;
   height: 35%;
