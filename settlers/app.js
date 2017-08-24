@@ -44,6 +44,28 @@ var specialCards = {
   largestArmy: 1
 }
 
+var players = {
+  orange: {
+    cities: 4,
+    settlements: 5,
+    roads: 15
+  },
+  blue: {
+    cities: 4,
+    settlements: 5,
+    roads: 15
+  },
+  white: {
+    cities: 4,
+    settlements: 5,
+    roads: 15
+  },
+  red: {
+    cities: 4,
+    settlements: 5,
+    roads: 15
+  }
+}
 
 /*******************************************************************************
                               HELPER FUNCTIONS
@@ -74,6 +96,11 @@ $(document).ready(function() {
   // Create hex grid unordered list to hold the hexagons in
   var $hexGrid = $('<ul>', {
     id: 'hexGrid'
+  })
+  .appendTo('main');
+
+  var $gamePieceGrid = $('<ul>', {
+    id: 'gameGrid'
   })
   .appendTo('main');
 
