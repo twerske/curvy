@@ -2,5 +2,5 @@ Hills - Brick (4 terrain)
 Feild - Grain/Wheat (4)
 Pasture - Wool (4)
 Mountain - Ore (3)
-Woods - Wood
+Woods - Wood (4)
 Desert - Robber

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Curvy</title>
+    <title>Settlers</title>
     <!-- <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan" rel="stylesheet"> -->
     <link rel="stylesheet" href="./style.css">
   </head>
@@ -13,6 +13,9 @@
     <div id='game'>
       <main></main>
       <nav>
+        <div>
+          <button type="button" id="start">New Game</button>
+        </div>
         <div>
           <h2>How to Play:</h2>
           <p>...</p>
@@ -29,15 +32,21 @@
       </nav>
       <aside>
         <div>
-          <button type="button" id="swerve" onclick="window.location.href='../index.html'">Back to Curvy</button>
-        </div>
-        <div>
-          <!-- <button type="button" id="start">New Game</button> -->
+          <h2>Building Costs</h2>
+          <hr>
+          <p>Road: 1 brick, 1 lumber</p>
+          <hr>
+          <p>Settlement: 1 brick, 1 lumber, 1 grain, 1 wool</p>
+          <hr>
+          <p>City: 2 grain, 3 ore</p>
+          <hr>
+          <p>Development Card: 1 wool, 1 grain, 1 ore</p>
         </div>
       </aside>
     </div>
     <footer>
       &copy; Emma Twersky, CODA 2017
+      <button type="button" id="swerve" onclick="window.location.href='../index.html'">Back to Curvy</button>
     </footer>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="./app.js"></script>
