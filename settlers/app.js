@@ -132,16 +132,29 @@ $(document).ready(function() {
   var select = function($el) {
     $el.find('p').attr('id', currentPlayer);
     $el.addClass(currentGamePiece)
+    $el.prop('selected', true);
+  }
+
+  var unselect = function($el) {
+    $el.find('p').attr('id', '');
+    $el.removeClass(currentGamePiece)
+    $el.prop('selected', false);
   }
 
   var initializeGamePieces = function() {
     $('.vertex').on('click', function(){
-      select($(this));
+      if ($(this).prop('selected') == true) {
+        unselect($(this));
+      }
+      else {select($(this));}
       // $(this).attr('disabled', true);
     });
 
     $('.road').on('click', function(){
-      select($(this));
+      if ($(this).prop('selected') == true) {
+        unselect($(this));
+      }
+      else {select($(this));}
       // $(this).attr('disabled', true);
     });
   }
@@ -157,23 +170,23 @@ $(document).ready(function() {
     initializeGamePieces();
   });
 
-  var currentPlayer, currentGamePiece;
-  currentPlayer = 'red';
-  currentGamePiece = 'settlement';
+  $('#turnOver').on('click', function() {
+    currentPlayer = player[currentPlayerIndex]
+  });
+
+  var currentPlayerIndex = 0, currentGamePiece;
+  // currentGamePiece = 'settlement';
 
   // First round
   // var finished = false;
   // while (!finished) {
-  //   for (p in players) {
   //     var turnOver = false;
   //     while (!turnOver) {
   //
   //     }
   //   }
-  //     currentPlayer = p;
-  //     currentGamePiece = 'settlement'
-  //
-  // }
+  currentPlayer = 'red';
+  currentGamePiece = 'settlement'
 
   var turnRoll = 0;
   // Roll dice when roll is pressed
