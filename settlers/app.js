@@ -27,12 +27,29 @@ var rollDice = function() {
         output = '';
     for (i = 0; i < 2; i++) {
         faceValue = Math.floor(Math.random() * 6);
-        output += `&#x268${faceValue}; `;
+        output += `&#x268${faceValue};`;
         total += faceValue;
     }
     $('#dice').html(output);
 
-    return total
+    return total + 2;
+}
+
+var terrainToResource = function(terrain) {
+  switch(terrain) {
+    case 'hill':
+        return 'brick'
+    case 'field':
+        return 'grain'
+    case 'pasture':
+        return 'wool'
+    case 'mountain':
+        return 'ore'
+    case 'woods':
+        return 'wood'
+    default:
+        return
+  }
 }
 
 /*******************************************************************************
@@ -84,7 +101,7 @@ $(document).ready(function() {
       };
 
       var $li = $('<li>', {
-        class: `hex ${alt}`,
+        class: `hex ${alt} ${i}`,
         id: `token${token[0]}`
       })
       .html(
@@ -159,6 +176,62 @@ $(document).ready(function() {
     });
   }
 
+  var resetScoreTracker = function() {
+    playerPieceStatus = {
+      orange: {
+        city: 0,
+        settlement: 0,
+        road: 0,
+        brick: 0,
+        ore: 0,
+        wool: 0,
+        grain: 0,
+        lumber: 0
+      },
+      blue: {
+        city: 0,
+        settlement: 0,
+        road: 0,
+        brick: 0,
+        ore: 0,
+        wool: 0,
+        grain: 0,
+        lumber: 0
+      },
+      white: {
+        city: 0,
+        settlement: 0,
+        road: 0,
+        brick: 0,
+        ore: 0,
+        wool: 0,
+        grain: 0,
+        lumber: 0
+      },
+      red: {
+        city: 0,
+        settlement: 0,
+        road: 0,
+        brick: 0,
+        ore: 0,
+        wool: 0,
+        grain: 0,
+        lumber: 0
+      }
+    }
+    for (player in players) {
+      var p = players[player]
+      $(`#${p} .city`).html(playerPieceStatus[p]['city'])
+      $(`#${p} .settlement`).html(playerPieceStatus[p]['settlement'])
+      $(`#${p} a.road`).html(playerPieceStatus[p]['road'])
+      $(`#${p} a.brick`).html(playerPieceStatus[p]['brick'])
+      $(`#${p} a.ore`).html(playerPieceStatus[p]['ore'])
+      $(`#${p} a.wool`).html(playerPieceStatus[p]['wool'])
+      $(`#${p} a.grain`).html(playerPieceStatus[p]['grain'])
+      $(`#${p} a.lumber`).html(playerPieceStatus[p]['lumber'])
+    }
+  }
+
   initializeHexGrid();
   initializeGameGrid();
   initializeGamePieces();
@@ -168,29 +241,84 @@ $(document).ready(function() {
     initializeHexGrid();
     initializeGameGrid();
     initializeGamePieces();
+    resetScoreTracker();
   });
 
   var currentPlayerIndex = 0,
-      currentGamePiece= 'settlement',
+      currentGamePiece= '',
       currentPlayer = players[currentPlayerIndex];
   $('#currentPlayer').html(currentPlayer);
   $('#currentPlayer').closest('h2').attr('id', currentPlayer);
+
+
+  // First two rounds
+  // while (playerPieceStatus['red'].settlements !=0 &&)
+
+
+  var updatePlayersInfo = function() {
+    for (player in players) {
+      var p = players[player]
+      $(`#${p} .city`).html(playerPieceStatus[p]['city'])
+      $(`#${p} .settlement`).html(playerPieceStatus[p]['settlement'])
+      $(`#${p} a.road`).html(playerPieceStatus[p]['road'])
+      $(`#${p} a.brick`).html(playerPieceStatus[p]['brick'])
+      $(`#${p} a.ore`).html(playerPieceStatus[p]['ore'])
+      $(`#${p} a.wool`).html(playerPieceStatus[p]['wool'])
+      $(`#${p} a.grain`).html(playerPieceStatus[p]['grain'])
+      $(`#${p} a.lumber`).html(playerPieceStatus[p]['lumber'])
+    }
+  }
+
+  var turnRoll = 0;
+  $('#roll').on('click', function(){
+    turnRoll = rollDice();
+    $('#roll').html(`A(n) ${turnRoll} was rolled`);
+    $('#roll').attr('disabled', true);
+
+    $(`*#token${turnRoll}`).each(function() {
+      // console.log($(this));
+      var info = $(this).attr('class');
+      var tile = parseInt(info.match(/\d+$/)[0], 10);
+      var resource = terrainToResource(info.split(' ')[1]);
+
+      // console.log(tile)
+      // console.log(resource)
+
+      for (key in vertexIndexes) {
+        if (vertexIndexes[key].adjacentResources.includes(tile)) {
+          var attr = $(`#space${key} p`).attr('id')
+          if (typeof attr !== typeof undefined && attr !== false) {
+            // console.log(playerPieceStatus[$(`#space${key} p`).attr('id')])
+            playerPieceStatus[$(`#space${key} p`).attr('id')][`${resource}`] += 1;
+          }
+        }
+      }
+    })
+
+    updatePlayersInfo();
+  });
+
+  $('#buyCity').on('click', function() {
+    currentGamePiece = 'city';
+  });
+
+  $('#buySettlement').on('click', function() {
+    currentGamePiece = 'settlement';
+  });
+
+  $('#buyRoad').on('click', function() {
+    currentGamePiece = 'road';
+  });
 
   $('#turnOver').on('click', function() {
     currentPlayer = players[++currentPlayerIndex % 4];
     $('#currentPlayer').html(currentPlayer);
     $('#currentPlayer').closest('h2').attr('id', currentPlayer);
+
+    $('#roll').html('Roll Dice');
+    $('#roll').attr('disabled', false);
   });
 
-  var turnRoll = 0;
-  // Roll dice when roll is pressed
-  var enableDice = function() {
-    // $('#roll').attr('disabled', false)
-    $('#roll').on('click', function(){
-      turnRoll = rollDice();
-    });
-  };
-  enableDice();
 });
 
 /*******************************************************************************
@@ -463,9 +591,9 @@ var players = ['orange', 'blue', 'white', 'red'];
 
 var playerPieceStatus = {
   orange: {
-    cities: 0,
-    settlements: 0,
-    roads: 0,
+    city: 0,
+    settlement: 0,
+    road: 0,
     brick: 0,
     ore: 0,
     wool: 0,
@@ -473,9 +601,9 @@ var playerPieceStatus = {
     lumber: 0
   },
   blue: {
-    cities: 0,
-    settlements: 0,
-    roads: 0,
+    city: 0,
+    settlement: 0,
+    road: 0,
     brick: 0,
     ore: 0,
     wool: 0,
@@ -483,9 +611,9 @@ var playerPieceStatus = {
     lumber: 0
   },
   white: {
-    cities: 0,
-    settlements: 0,
-    roads: 0,
+    city: 0,
+    settlement: 0,
+    road: 0,
     brick: 0,
     ore: 0,
     wool: 0,
@@ -493,9 +621,9 @@ var playerPieceStatus = {
     lumber: 0
   },
   red: {
-    cities: 0,
-    settlements: 0,
-    roads: 0,
+    city: 0,
+    settlement: 0,
+    road: 0,
     brick: 0,
     ore: 0,
     wool: 0,

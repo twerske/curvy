@@ -178,6 +178,10 @@ aside img {
   border-radius: 1rem;
 }
 
+button[disabled] {
+  background: black;
+}
+
 /*** HEX GRID *****************************************************************/
 #hexGrid{
   display: flex;
