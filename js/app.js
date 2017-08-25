@@ -78,7 +78,6 @@ $(document).ready(function() {
     var won = true;
     $('#hexGrid').find('li').each(function() {
       var rotation = $(this).data('angle');
-      console.log(`${$(this).attr('id')}: ${rotation % 360}`);
       if ($(this).attr('id') == '26') {
         if (!(rotation % 360 == 90 || rotation % 360 == 270)) {
           won = false;
