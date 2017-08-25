@@ -3,10 +3,12 @@ Curvy
 A rendition of the game 'Curvy' to fulfill our CODA Unit 1 game assignment
 ---------------------
 ### Technologies used.
-To complete this project, I used Github, Atom, Javascript, CSS and HTML.
+To complete this project, I used the languages Javascript, CSS and HTML, all on Atom and hosted by Github. 
 
 ### Your process/approach.
-My process was to initially wireframe and create user stories, as well as look at the components this game would need. I then created psuedo-code outlining each technology and how it would be used. Next, I began by figuring out creating the game board. This hexagonal design took a majority of my Monday and Tuesday. To create the interlocking grid of figures, I used an unordered list of items. I then rendered the 39 images and formatted them to fill the tiles. I then began on looking at rotating game pieces and formatting the game. Finally, I worked on simplifying my code to be dry, adding comments and looking forward and further features. I specifically focused on the features which were easily completed, and tackled a timer and shuffle and reset buttons. This appraoch was heavily streamlined by my initial user stories and Trello board, as well as the wireframing and understanding of features vital versus "fun" to complete the game.
+My process was to initially wireframe and create user stories, as well as look at the components this game would need. I then created psuedo-code outlining each technology and how it would be used. Next, I began by figuring out creating the game board. This hexagonal design took a majority of my Monday and Tuesday. To create the interlocking grid of figures, I used an unordered list of items. I then rendered the 39 images and formatted them to fill the tiles. I then began on looking at rotating game pieces and formatting the game. Finally, I worked on simplifying my code to be dry, adding comments and looking forward and further features. I specifically focused on the features which were easily completed, and tackled a button to shuffle and create a new game and reset buttons. This appraoch was heavily streamlined by my initial user stories and Trello board, as well as the wireframing and understanding of features vital versus "fun" to complete the game.
+
+I also approached creating a secondary game of a Settlers of Catan board. This process was very different from the above.
 
 ### Future features
 In the future, this game will include levels of difficulty and customization, as well as a potential version to play against a computer and keep score as the number of edges successfully matched up in each round or turn. I would also love to be able to render my own games individually on the screen, instead of relying on predetermined images and renderings.
