@@ -1,7 +1,6 @@
 Curvy
 ====================
 https://github.kdc.capitalone.com/pages/vuv915/curvy/
-A rendition of the game 'Curvy' to fulfill our CODA Unit 1 game assignment
 ---------------------
 ### Technologies used.
 To complete this project, I used the languages Javascript, CSS and HTML, all on Atom and hosted by Github.
