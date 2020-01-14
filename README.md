@@ -1,7 +1,6 @@
 Curvy
 ====================
 This is a project originally developed as a 10% project under Capital One's CODA associate learning project.
-https://github.kdc.capitalone.com/pages/vuv915/curvy/
 ---------------------
 ### Technologies used.
 To complete this project, I used the languages Javascript, CSS and HTML, all on Atom and hosted by Github.
